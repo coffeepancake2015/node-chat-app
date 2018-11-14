@@ -21,11 +21,11 @@ io.on('connection', (socket) => {
     // });
     
     //  Send to client
-    socket.emit('newMessage', {
-        from:'a@mail.com',
-        text:'Hey, bitch',
-        createdAt:123
-    });
+    // socket.emit('newMessage', {
+    //     from:'a@mail.com',
+    //     text:'Hey, bitch',
+    //     createdAt:123
+    // });
 
     // socket.on('createEmail', (newEmail) =>{
     //     console.log('createEmail', newEmail);
@@ -34,6 +34,13 @@ io.on('connection', (socket) => {
     //  Receive from client
     socket.on('createMessage', function(message) {
         console.log('createMessage', message);
+        
+        io.emit('newMessage', {
+            from: message.from,
+            text: message.text,
+            createdAt : new Date().getTime()
+        });
+
     });
 
     socket.on('disconnect', () => {
