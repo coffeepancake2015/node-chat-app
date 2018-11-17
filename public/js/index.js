@@ -19,9 +19,16 @@ socket.on('disconnect', function() {
 
 socket.on('newMessage', function(message){
     console.log('newMessage', message);
+    
 });
 
 // socket.on('newEmail', function(email){
 //     console.log('newEmail', email);
 // });
 
+socket.emit('createMessage', {
+    from:'Frank',
+    text:'Hi'
+}, function(data){
+    console.log('Got it.', data);
+});
