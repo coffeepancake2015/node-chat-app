@@ -5,12 +5,12 @@ function scrollToBottom(){
     var messages = $('#messages');
     var newMessage = messages.children('li:last-child');
 
-    //  Heights
-    var clientHeight = messages.prop('clientHeight');
-    var scrollTop = messages.prop('scrollTop');
-    var scrollHeight = messages.prop('scrollHeight');
-    var newMessageHeight = newMessage.innerHeight();
-    var lastMessageHeight = newMessage.prev().innerHeight();
+    //  Heights     http://prntscr.com/ljtjj6
+    var clientHeight = messages.prop('clientHeight');   //  Currently viewing height in browser
+    var scrollTop = messages.prop('scrollTop');         //  whatever above clientHeight
+    var scrollHeight = messages.prop('scrollHeight');   //  entire container's height
+    var newMessageHeight = newMessage.innerHeight();    //  New msg's height
+    var lastMessageHeight = newMessage.prev().innerHeight();    //  New msg's -1 height
 
     if(clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight){
         messages.scrollTop(scrollHeight);
